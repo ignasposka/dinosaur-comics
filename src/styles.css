@@ -1,0 +1,30 @@
+.container {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.dinosaurs-image {
+  position: absolute;
+  width: 100%;
+  max-width: 700px;
+}
+
+.text-input-1 {
+  margin-left: 43%;
+  margin-top: 10%;
+}
+
+.text-input {
+  position: absolute;
+}
+
+.text-input-2 {
+  margin-left: 55%;
+  margin-top: 25%;
+}
+
+.text-input-3{
+    margin-left: 70%;
+    margin-top: 2%;
+}
