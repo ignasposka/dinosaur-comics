@@ -32,7 +32,13 @@
   width: 25%;
 }
 
-textarea {
-    font-size: 2vw;
+textarea.invisible {
+  background: transparent;
+  border: none;
 }
 
+@media (max-width: 700px) {
+  textarea {
+    font-size: 2vw;
+  }
+}
