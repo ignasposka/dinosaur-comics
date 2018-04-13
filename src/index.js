@@ -36,7 +36,15 @@ const initWrapper = () => {
       textbox1.classList.add('hidden');
       textbox2.classList.add("hidden");
       textbox3.classList.add("hidden");
-      buildImageButton.classList.add('hidden')
+      buildImageButton.classList.add('hidden');
+    },
+    reset: () => {
+      let imgWidth = document.querySelector('#canvas').width;
+      let imgHeight = document.querySelector('#canvas').height;
+
+      ctx.clearRect(imgWidth * 0.43, imgHeight * 0.10, imgWidth * 0.25, imgHeight * 0.1);
+      ctx.clearRect(imgWidth * 0.55, imgHeight * 0.35, imgWidth * 0.25, imgHeight * 0.1);
+      ctx.clearRect(imgWidth * 0.70, imgHeight * 0.02, imgWidth * 0.25, imgHeight * 0.1);      
     }
   };
 };
@@ -44,10 +52,13 @@ const initWrapper = () => {
 (() => {
   let wrapper = initWrapper();
   let textAreas = document.querySelectorAll("textarea");
+  let buildImageButton = document.querySelector("#build-img-btn");
+  let createNewButton = document.querySelector("#create-new-btn");
+
   textAreas.forEach(ta =>
     ta.addEventListener("input", wrapper.textAreaHandler)
   );
-  wrapper.setUpCanvas();
-  let buildImageButton = document.querySelector("#build-img-btn");
+  wrapper.setUpCanvas();  
   buildImageButton.addEventListener("click", wrapper.buildImage);
+  createNewButton.addEventListener('click', wrapper.reset);
 })();
