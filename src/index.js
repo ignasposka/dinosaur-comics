@@ -1,6 +1,7 @@
 const initWrapper = () => {
   let ctx;
   let image;
+  const limitWidth = 700;
   return {
     textAreaHandler: e => {
       let classList = e.target.classList;
@@ -18,7 +19,7 @@ const initWrapper = () => {
       canvas.crossOrigin = "Anonymous";
       canvas.height = image.height;
       ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
-      ctx.font = "2vw monospace";
+      ctx.font = window.innerWidth < limitWidth ? "2vw Lucida Console" : "13.3333px Lucida Console";
     },
     buildImage: () => {
       let textbox1 = document.querySelector(".text-input-1");
