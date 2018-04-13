@@ -27,6 +27,7 @@ const initWrapper = () => {
       let textbox3 = document.querySelector(".text-input-3");
       let imgWidth = document.querySelector('#canvas').width;
       let imgHeight = document.querySelector('#canvas').height;
+      let buildImageButton = document.querySelector("#build-img-btn");
       
       ctx.fillText(textbox1.value, imgWidth * 0.43, imgHeight * 0.16);
       ctx.fillText(textbox2.value, imgWidth * 0.55, imgHeight * 0.40);  
@@ -35,6 +36,7 @@ const initWrapper = () => {
       textbox1.classList.add('hidden');
       textbox2.classList.add("hidden");
       textbox3.classList.add("hidden");
+      buildImageButton.classList.add('hidden')
     }
   };
 };
