@@ -3,18 +3,32 @@ const initWrapper = () => {
   let image;
   const limitWidth = 700;
   let buildImageButton = document.querySelector("#build-img-btn");
+
   const textFill = (ctx, textBox, x, y) => {
     const lineCount = textBox.rows;
     let lineLength = textBox.cols;
+    const lines = textToLines(textBox.value, lineLength, lineCount);
     const lineHeight = 16;
-    const textLenght = textBox.value.length;
-    for (let start = 0; start < textLenght && start < lineLength * (lineCount - 1); start += lineHeight) {
-      ctx.fillText(
-        textBox.value.substring(start, start + lineLength),
-        x,
-        (y += lineHeight)
-      );
+
+    lines.forEach(line => ctx.fillText(line, x, (y += lineHeight)));
+  };
+
+  const textToLines = (text, lineLength, maxLineNumber) => {
+    let start = 0;
+    let lineCount = Math.min(Math.ceil(text.length / lineLength), maxLineNumber);
+    let lines = [];
+    for (let i = 0; i < lineCount; i++) {
+      let line = text.substring(start, (i + 1) * lineLength);
+      if (text.indexOf((i + 1) * lineLength) + 1) {
+        let cutTo = line.lastIndexOf(" ");
+        start += cutTo;
+        line = line.substring(0, cutTo);
+      } else {
+        start += lineLength;
+      }
+      lines.push(line.charAt(0) != " " ? line : line.substring(1));
     }
+    return lines;
   };
   return {
     textAreaHandler: e => {
@@ -46,8 +60,8 @@ const initWrapper = () => {
       let imgHeight = document.querySelector("#canvas").height;
 
       textFill(ctx, textbox1, imgWidth * 0.43, imgHeight * 0.16);
-      textFill(ctx, textbox2, imgWidth * 0.55, imgHeight * 0.4);      
-      textFill(ctx, textbox3, imgWidth * 0.7, imgHeight * 0.05);            
+      textFill(ctx, textbox2, imgWidth * 0.55, imgHeight * 0.4);
+      textFill(ctx, textbox3, imgWidth * 0.7, imgHeight * 0.05);
       image.classList.add("hidden");
       textbox1.classList.add("hidden");
       textbox2.classList.add("hidden");
@@ -69,7 +83,7 @@ const initWrapper = () => {
         imgWidth * 0.55,
         imgHeight * 0.35,
         imgWidth * 0.25,
-        imgHeight * 0.2
+        imgHeight * 0.25
       );
       ctx.clearRect(
         imgWidth * 0.7,

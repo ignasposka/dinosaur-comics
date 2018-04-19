@@ -20,6 +20,7 @@ canvas {
 .text-input {
   position: absolute;
   font-family: 'Lucida Console';
+  overflow: hidden;
 }
 
 .text-input-1 {
