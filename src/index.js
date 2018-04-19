@@ -45,10 +45,9 @@ const initWrapper = () => {
       let imgWidth = document.querySelector("#canvas").width;
       let imgHeight = document.querySelector("#canvas").height;
 
-      //ctx.fillText(textbox1.value, imgWidth * 0.43, imgHeight * 0.16);
       textFill(ctx, textbox1, imgWidth * 0.43, imgHeight * 0.16);
-      ctx.fillText(textbox2.value, imgWidth * 0.55, imgHeight * 0.4);
-      ctx.fillText(textbox3.value, imgWidth * 0.7, imgHeight * 0.05);
+      textFill(ctx, textbox2, imgWidth * 0.55, imgHeight * 0.4);      
+      textFill(ctx, textbox3, imgWidth * 0.7, imgHeight * 0.05);            
       image.classList.add("hidden");
       textbox1.classList.add("hidden");
       textbox2.classList.add("hidden");
@@ -70,13 +69,13 @@ const initWrapper = () => {
         imgWidth * 0.55,
         imgHeight * 0.35,
         imgWidth * 0.25,
-        imgHeight * 0.1
+        imgHeight * 0.2
       );
       ctx.clearRect(
         imgWidth * 0.7,
         imgHeight * 0.02,
         imgWidth * 0.25,
-        imgHeight * 0.1
+        imgHeight * 0.2
       );
       textInputs.forEach(input => {
         input.classList.remove("hidden", "invisible");
