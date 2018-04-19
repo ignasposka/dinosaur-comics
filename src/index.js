@@ -3,6 +3,19 @@ const initWrapper = () => {
   let image;
   const limitWidth = 700;
   let buildImageButton = document.querySelector("#build-img-btn");
+  const textFill = (ctx, textBox, x, y) => {
+    const lineCount = textBox.rows;
+    let lineLength = textBox.cols;
+    const lineHeight = 16;
+    const textLenght = textBox.value.length;
+    for (let start = 0; start < textLenght && start < lineLength * (lineCount - 1); start += lineHeight) {
+      ctx.fillText(
+        textBox.value.substring(start, start + lineLength),
+        x,
+        (y += lineHeight)
+      );
+    }
+  };
   return {
     textAreaHandler: e => {
       let classList = e.target.classList;
@@ -30,9 +43,10 @@ const initWrapper = () => {
       let textbox2 = document.querySelector(".text-input-2");
       let textbox3 = document.querySelector(".text-input-3");
       let imgWidth = document.querySelector("#canvas").width;
-      let imgHeight = document.querySelector("#canvas").height;      
+      let imgHeight = document.querySelector("#canvas").height;
 
-      ctx.fillText(textbox1.value, imgWidth * 0.43, imgHeight * 0.16);
+      //ctx.fillText(textbox1.value, imgWidth * 0.43, imgHeight * 0.16);
+      textFill(ctx, textbox1, imgWidth * 0.43, imgHeight * 0.16);
       ctx.fillText(textbox2.value, imgWidth * 0.55, imgHeight * 0.4);
       ctx.fillText(textbox3.value, imgWidth * 0.7, imgHeight * 0.05);
       image.classList.add("hidden");
@@ -50,7 +64,7 @@ const initWrapper = () => {
         imgWidth * 0.43,
         imgHeight * 0.1,
         imgWidth * 0.25,
-        imgHeight * 0.1
+        imgHeight * 0.3
       );
       ctx.clearRect(
         imgWidth * 0.55,
@@ -66,7 +80,7 @@ const initWrapper = () => {
       );
       textInputs.forEach(input => {
         input.classList.remove("hidden", "invisible");
-        input.value = '';
+        input.value = "";
       });
       buildImageButton.classList.remove("hidden");
     }
