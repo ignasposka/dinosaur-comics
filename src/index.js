@@ -15,11 +15,14 @@ const initWrapper = () => {
 
   const textToLines = (text, lineLength, maxLineNumber) => {
     let start = 0;
-    let lineCount = Math.min(Math.ceil(text.length / lineLength), maxLineNumber);
+    let lineCount = Math.min(
+      Math.ceil(text.length / lineLength),
+      maxLineNumber
+    );
     let lines = [];
     for (let i = 0; i < lineCount; i++) {
-      let line = text.substring(start, (i + 1) * lineLength);
-      if (text.indexOf((i + 1) * lineLength) + 1) {
+      let line = text.substring(start, start + lineLength);
+      if (line.indexOf(" ") != -1 && i < lineCount - 1 && text[(i + 1) * lineLength] != " ") {
         let cutTo = line.lastIndexOf(" ");
         start += cutTo;
         line = line.substring(0, cutTo);
