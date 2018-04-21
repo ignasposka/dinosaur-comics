@@ -22,7 +22,11 @@ const initWrapper = () => {
     let lines = [];
     for (let i = 0; i < lineCount; i++) {
       let line = text.substring(start, start + lineLength);
-      if (line.indexOf(" ") != -1 && i < lineCount - 1 && text[(i + 1) * lineLength] != " ") {
+      if (
+        line.indexOf(" ") != -1 &&
+        i < lineCount - 1 &&
+        text[(i + 1) * lineLength] != " "
+      ) {
         let cutTo = line.lastIndexOf(" ");
         start += cutTo;
         line = line.substring(0, cutTo);
@@ -71,7 +75,7 @@ const initWrapper = () => {
       textbox3.classList.add("hidden");
       buildImageButton.classList.add("hidden");
     },
-    reset: () => {
+    returnBack: (e, toEdit = false) => {
       let imgWidth = document.querySelector("#canvas").width;
       let imgHeight = document.querySelector("#canvas").height;
       let textInputs = document.querySelectorAll(".text-input");
@@ -95,8 +99,12 @@ const initWrapper = () => {
         imgHeight * 0.2
       );
       textInputs.forEach(input => {
-        input.classList.remove("hidden", "invisible");
-        input.value = "";
+        if (toEdit) {
+          input.classList.remove("hidden");
+        } else {
+          input.classList.remove("hidden", "invisible");
+          input.value = "";
+        }
       });
       buildImageButton.classList.remove("hidden");
     }
@@ -108,11 +116,15 @@ const initWrapper = () => {
   let textAreas = document.querySelectorAll("textarea");
   let buildImageButton = document.querySelector("#build-img-btn");
   let createNewButton = document.querySelector("#create-new-btn");
+  let editButton = document.querySelector("#edit-btn");
 
   textAreas.forEach(ta =>
     ta.addEventListener("input", wrapper.textAreaHandler)
   );
   wrapper.setUpCanvas();
   buildImageButton.addEventListener("click", wrapper.buildImage);
-  createNewButton.addEventListener("click", wrapper.reset);
+  createNewButton.addEventListener("click", wrapper.returnBack);
+  editButton.addEventListener("click", (e) => 
+    wrapper.returnBack(e, true)
+  );
 })();
