@@ -19,22 +19,25 @@ const initWrapper = () => {
       : '13.3333px Lucida Console';
 
   return {
-    textAreaHandler: e => textAreaHandler(e),
     buildImage: () => buildImage(ctx, buildImageButton, image),
-    returnBack: (e, toEdit = false) => returnBack(toEdit, ctx, buildImageButton)
+    returnBack: (e, toEdit = false) =>
+      returnBack(toEdit, ctx, buildImageButton),
+    textAreasDelegate: e => {
+      if (e.target.classList.contains('text-input')) {
+        textAreaHandler(e);
+      }
+    }
   };
 };
 
 (() => {
   let wrapper = initWrapper();
-  let textAreas = document.querySelectorAll('textarea');
+  let textAreas = document.querySelector('#text-areas');
   let buildImageButton = document.querySelector('#build-img-btn');
   let createNewButton = document.querySelector('#create-new-btn');
   let editButton = document.querySelector('#edit-btn');
 
-  textAreas.forEach(ta =>
-    ta.addEventListener('input', wrapper.textAreaHandler)
-  );
+  textAreas.addEventListener('input', wrapper.textAreasDelegate);
   buildImageButton.addEventListener('click', wrapper.buildImage);
   createNewButton.addEventListener('click', wrapper.returnBack);
   editButton.addEventListener('click', e => wrapper.returnBack(e, true));
