@@ -3,19 +3,21 @@ const returnBack = (toEdit, ctx, buildImageButton) => {
   let imgHeight = document.querySelector('#canvas').height;
   let textInputs = document.querySelectorAll('.text-input');
 
-  ctx.clearRect(
+  ctx.fillStyle = '#ffffff';
+
+  ctx.fillRect(
     imgWidth * 0.43,
     imgHeight * 0.1,
     imgWidth * 0.25,
     imgHeight * 0.3
   );
-  ctx.clearRect(
+  ctx.fillRect(
     imgWidth * 0.55,
     imgHeight * 0.35,
     imgWidth * 0.25,
     imgHeight * 0.25
   );
-  ctx.clearRect(
+  ctx.fillRect(
     imgWidth * 0.7,
     imgHeight * 0.02,
     imgWidth * 0.25,
