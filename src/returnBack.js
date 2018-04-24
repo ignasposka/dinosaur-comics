@@ -23,6 +23,8 @@ const returnBack = (toEdit, ctx, buildImageButton) => {
     imgWidth * 0.25,
     imgHeight * 0.2
   );
+
+  ctx.fillStyle = '#000000';
   textInputs.forEach(input => {
     if (toEdit) {
       input.classList.remove('hidden');
