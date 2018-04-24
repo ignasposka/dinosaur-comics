@@ -1,4 +1,5 @@
 @import url(http://allfont.net/allfont.css?fonts=lucida-console);
+@import url('https://fonts.googleapis.com/css?family=Oswald:300');
 
 .container {
   position: relative;
@@ -48,6 +49,36 @@ textarea.invisible {
 
 .hidden {
   display: none;
+}
+
+body {
+  background: #eaeac7;
+}
+
+#buttons {
+  text-align: center;
+}
+
+button {
+  vertical-align: top;
+  padding: 8px 15px 8px 15px;
+  margin-right: 10px;
+  font-size: 22px;
+  color: black;
+  text-align: center;
+  /* text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25); */
+  background: #f1c40f;
+  border: 0;
+  cursor: pointer;
+  font-family: 'Oswald';
+  font-size: 18px;
+  line-height: 20px;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+button:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 @media (max-width: 700px) {
