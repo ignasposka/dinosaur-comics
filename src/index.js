@@ -7,12 +7,14 @@ const initWrapper = () => {
   let buildImageButton = document.querySelector('#build-img-btn');
   let canvas = document.querySelector('canvas');
   let ctx = canvas.getContext('2d');
-  let image = document.querySelector('img');
+  let imageSrc = document.querySelector('img').src;
+  let image = new Image();
+  image.src = imageSrc;
 
   canvas.width = image.width;
   canvas.crossOrigin = 'Anonymous';
   canvas.height = image.height;
-  ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+  image.onload = () => ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
   ctx.font =
     window.innerWidth < limitWidth
       ? '2vw Lucida Console'
