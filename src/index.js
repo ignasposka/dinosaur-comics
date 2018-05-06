@@ -23,7 +23,7 @@ const initWrapper = () => {
       : '13.3333px Lucida Console';
 
   return {
-    buildImage: () => buildImage(ctx, buildImageButton, image),
+    buildImage: () => buildImage(ctx, buildImageButton),
     returnBack: (e, toEdit = false) =>
       returnBack(toEdit, ctx, buildImageButton),
     textAreasDelegate: e => {

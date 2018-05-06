@@ -1,6 +1,7 @@
 import textFill from './textFill';
 
-const buildImage = (ctx, buildImageButton, image) => {
+const buildImage = (ctx, buildImageButton) => {
+  let image = document.querySelector('img');
   let textbox1 = document.querySelector('.text-input-1');
   let textbox2 = document.querySelector('.text-input-2');
   let textbox3 = document.querySelector('.text-input-3');
