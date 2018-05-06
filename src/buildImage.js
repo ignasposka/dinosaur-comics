@@ -1,6 +1,13 @@
 import textFill from './textFill';
 
 const buildImage = (ctx, buildImageButton) => {
+  const limitWidth = 700;
+
+  ctx.font =
+    window.innerWidth < limitWidth
+      ? '2vw Lucida Console'
+      : '13.3333px Lucida Console';
+
   let image = document.querySelector('img');
   let textbox1 = document.querySelector('.text-input-1');
   let textbox2 = document.querySelector('.text-input-2');

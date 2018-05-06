@@ -3,7 +3,6 @@ import returnBack from './returnBack';
 import textAreaHandler from './textAreaHandler';
 
 const initWrapper = () => {
-  const limitWidth = 700;
   let buildImageButton = document.querySelector('#build-img-btn');
   let canvas = document.querySelector('canvas');
   let ctx = canvas.getContext('2d');
@@ -17,10 +16,6 @@ const initWrapper = () => {
     canvas.height = image.height;
     ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
   };
-  ctx.font =
-    window.innerWidth < limitWidth
-      ? '2vw Lucida Console'
-      : '13.3333px Lucida Console';
 
   return {
     buildImage: () => buildImage(ctx, buildImageButton),
