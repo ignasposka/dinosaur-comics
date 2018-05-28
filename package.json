@@ -8,7 +8,8 @@
     "start":
       "browser-sync start --config bs-config.js --server --files 'css/*.css, **/*.html, **/*.js' | webpack --watch",
     "build_prod":
-      "del prod/q | html-minifier --collapse-whitespace src/index.html -o prod/index.html | xcopy images prod\\images /Y | uglifyjs --compress --mangle -o prod/bundle.js -- dist/bundle.js | postcss src/styles.css > prod/styles.css | CALL prepare-html.bat"
+      "del prod/q | html-minifier --collapse-whitespace src/index.html -o prod/index.html | xcopy images prod\\images /Y | uglifyjs --compress --mangle -o prod/bundle.js -- dist/bundle.js | postcss src/styles.css > prod/styles.css | CALL prepare-html.bat",
+    "deploy": ".\\deploy.bat"
   },
   "author": "Ignas Poška <ignasp789@gmail.com> (https://github.com/ignasposka)",
   "license": "ISC",

@@ -1,0 +1,3 @@
+open sftp://root@46.101.158.45 -privatekey=D:\Drive\Digital_Ocean_Droplet\id_rsa.ppk -hostkey="*"
+put "D:\Drive\dinosaur_comics_generator V2\prod" /var/www/dinosaur_comics
+exit
