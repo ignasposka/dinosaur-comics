@@ -65,3 +65,4 @@ typings/
 dist/bundle.js
 output.css
 prod/
+scriptLog.txt
